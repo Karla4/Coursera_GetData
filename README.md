@@ -6,7 +6,7 @@ This file describes how run_analysis.R script works.
 Here are the data for the project:
 
 
-* <b>Dataset</b>: <a href="https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip">
+* <b>Dataset</b>: https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
 
 You should create one R script called run_analysis.R that does the following.
 
