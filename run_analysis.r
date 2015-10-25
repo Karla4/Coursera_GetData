@@ -22,14 +22,8 @@ subject_data <- rbind(subject_train, subject_test)
 ###############################################################################
 
 features <- read.table("features.txt")
-
-# get only columns with mean() or std() in their names
 mean_and_std_features <- grep("-(mean|std)\\(\\)", features[, 2])
-
-# subset the desired columns
 x_data <- x_data[, mean_and_std_features]
-
-# correct the column names
 names(x_data) <- features[mean_and_std_features, 2]
 
 # Step 3
@@ -37,21 +31,14 @@ names(x_data) <- features[mean_and_std_features, 2]
 ###############################################################################
 
 activities <- read.table("activity_labels.txt")
-
-# update values with correct activity names
 y_data[, 1] <- activities[y_data[, 1], 2]
-
-# correct column name
 names(y_data) <- "activity"
 
 # Step 4
 # Appropriately label the data set with descriptive variable names
 ###############################################################################
 
-# correct column name
 names(subject_data) <- "subject"
-
-# bind all the data in a single data set
 all_data <- cbind(x_data, y_data, subject_data)
 
 # Step 5
@@ -59,7 +46,5 @@ all_data <- cbind(x_data, y_data, subject_data)
 # for each activity and each subject
 ###############################################################################
 
-# 66 <- 68 columns but last two (activity & subject)
 averages_data <- ddply(all_data, .(subject, activity), function(x) colMeans(x[, 1:66]))
-
 write.table(averages_data, "new_data.txt", row.name=FALSE)
